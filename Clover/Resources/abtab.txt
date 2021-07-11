@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nueva pestaña</title>
+  <style type="text/css">
+  html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+  }
+  article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+  }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #f9f9fb;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  ol,
+  ul,
+  dl {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  ol ol,
+  ul ul,
+  ol ul,
+  ul ol {
+    margin-bottom: 0;
+  }
+  a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+  }
+
+  a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+  figure {
+    margin: 0 0 1rem;
+  }
+
+  img {
+    vertical-align: middle;
+    border-style: none;
+  }
+
+  svg {
+    overflow: hidden;
+    vertical-align: middle;
+  }
+  button {
+    border-radius: 0;
+  }
+
+  button:focus {
+    outline: 1px dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
+
+  input,
+  button,
+  select,
+  optgroup,
+  textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  button,
+  input {
+    overflow: visible;
+  }
+
+  button,
+  select {
+    text-transform: none;
+  }
+
+  select {
+    word-wrap: normal;
+  }
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  h1, .h1 {
+    font-size: 2.5rem;
+  }
+
+  h2, .h2 {
+    font-size: 2rem;
+  }
+
+  h3, .h3 {
+    font-size: 1.75rem;
+  }
+
+  h4, .h4 {
+    font-size: 1.5rem;
+  }
+
+  h5, .h5 {
+    font-size: 1.25rem;
+  }
+
+  h6, .h6 {
+    font-size: 1rem;
+  }
+  small,
+  .small {
+    font-size: 80%;
+    font-weight: 400;
+  }
+  .container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media (min-width: 576px) {
+    .container {
+      max-width: 540px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      max-width: 720px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .container {
+      max-width: 960px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1140px;
+    }
+  }
+  .table {
+    display: table;
+  }
+  .table-cell {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .vh-100{
+    height: 100vh;
+  }
+  .w-100 {
+    width: 100%;
+  }
+  .d-block {
+    display: block!important;
+  }
+
+  .float-left {
+    float: left;
+  }
+  .marks {
+      width: 100%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .text-truncate {
+    text-overflow:ellipsis;
+    overflow:hidden;
+    width:100%;
+    text-align: center;
+    max-height: 30px!important;
+    margin:auto;
+  }
+  .marks-cards {
+      vertical-align: middle;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      padding: 10px;
+      text-align: center;
+  }
+  .card {
+    width: 23.5%;
+    height: 160px;
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+    position: relative;
+  }
+  .card-dir {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 12px;
+    padding: 10px;
+    float: left;
+    color: #777;
+    text-decoration: none;
+  }
+  .card-dir:hover {
+    background: rgba(0,0,0,0.04);
+    text-decoration: none;
+  }
+  .card-dir-content {
+    border-radius: 8px;
+    border:solid 1px rgba(0,0,0,0.1);
+    background: #fff;
+    height: 100%;
+    width:100%;
+    position: relative;
+    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.05);
+    -webkit-box-shadow:0px 0px 10px 0px rgba(0,0,0,0.05);
+  }
+  .logo {
+    height:120px;
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+    background-image: url('http://duographics.com.ec/hilsoft/AppData/logo-full.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  .mark-img {
+    height: 30px;
+    width: 30px;
+    margin:auto;
+  }
+  @media (max-width: 991px) {
+    .card {
+      width: 23.5%;
+      height: 120px;
+    }
+  }
+  @media (max-width: 767px) {
+    .card {
+      width: 31.5%;
+      height: 120px;
+    }
+  }
+  @media (max-width: 600px) {
+    .card {
+      width: 48.5%;
+      height: 120px;
+    }
+  }
+  @media (max-width: 500px) {
+    .logo {
+      height:100px;
+      width:100%;
+    }
+    .card {
+      width: 48.5%;
+      height: 120px;
+    }
+  }
+  @media (max-width: 400px) {
+    .card {
+      width: 100%;
+      height: 120px;
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="marks vh-100 table">
+      <div class="table-cell">
+        <div class="logo"></div>
+        <div class="mark-cards">
+          <div class="card">
+            <a class="card-dir table" href="">
+              <div class="card-dir-content table-cell">
+                <span class="d-block text-truncate float-left">Marcador disponible</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="card">
+            <a class="card-dir table" href="">
+              <div class="card-dir-content table-cell">
+                <span class="d-block text-truncate float-left">Marcador disponible</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="card">
+            <a class="card-dir table" href="">
+              <div class="card-dir-content table-cell">
+                <span class="d-block text-truncate float-left">Marcador disponible</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="card">
+            <a class="card-dir table" href="">
+              <div class="card-dir-content table-cell">
+                <span class="d-block text-truncate float-left">Marcador disponible</span>
+              </div>
+            </a>
+          </div>
+
+          <!--- row ---->
+
+          <div class="card">
+            <a class="card-dir table" href="">
+              <div class="card-dir-content table-cell">
+                <span class="d-block text-truncate float-left">Marcador disponible</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="card">
+            <a class="card-dir table" href="">
+              <div class="card-dir-content table-cell">
+                <span class="d-block text-truncate float-left">Marcador disponible</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="card">
+            <a class="card-dir table" href="">
+              <div class="card-dir-content table-cell">
+                <span class="d-block text-truncate float-left">Marcador disponible</span>
+              </div>
+            </a>
+          </div>
+
+          <div class="card">
+            <a class="card-dir table" href="">
+              <div class="card-dir-content table-cell">
+                <span class="d-block text-truncate float-left">Marcador disponible</span>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

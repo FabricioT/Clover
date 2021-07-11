@@ -1,0 +1,78 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="My" GeneratedClassName="MySettings" UseMySettingsClassName="true">
+  <Profiles />
+  <Settings>
+    <Setting Name="homepage" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="StyleBrowser0" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">216, 214, 211</Value>
+    </Setting>
+    <Setting Name="StyleBrowser1" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">186, 185, 183</Value>
+    </Setting>
+    <Setting Name="StyleBrowser2" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">216, 214, 211</Value>
+    </Setting>
+    <Setting Name="StyleBrowser3" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">64, 64, 64</Value>
+    </Setting>
+    <Setting Name="StyleBrowser4" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">DimGray</Value>
+    </Setting>
+    <Setting Name="StyleBrowser5" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">238, 236, 233</Value>
+    </Setting>
+    <Setting Name="StyleBrowser6" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">216, 214, 211</Value>
+    </Setting>
+    <Setting Name="StyleBrowser7" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">238, 236, 233</Value>
+    </Setting>
+    <Setting Name="StyleBrowser8" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="StyleBrowser9" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">Transparent</Value>
+    </Setting>
+    <Setting Name="StyleBrowser10" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">229, 226, 222</Value>
+    </Setting>
+    <Setting Name="StyleBrowser11" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">86, 75, 68</Value>
+    </Setting>
+    <Setting Name="StyleBrowser12" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">229, 226, 222</Value>
+    </Setting>
+    <Setting Name="StyleBrowser13" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">86, 75, 68</Value>
+    </Setting>
+    <Setting Name="StyleBrowser14" Type="System.Drawing.Color" Scope="User">
+      <Value Profile="(Default)">White</Value>
+    </Setting>
+    <Setting Name="IsDarkTheme" Type="System.Boolean" Scope="User">
+      <Value Profile="(Default)">False</Value>
+    </Setting>
+    <Setting Name="TopSitesAddress" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TopSitesName" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="TopSitesImages" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="BasicHistory" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="BookAddress" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="BookNames" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="BookImages" Type="System.Collections.Specialized.StringCollection" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+  </Settings>
+</SettingsFile>

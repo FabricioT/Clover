@@ -1,0 +1,570 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="aboutblank" xml:space="preserve">
+    <value>&lt;!DOCTYPE html&gt;
+&lt;html lang="es"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;meta http-equiv="X-UA-Compatible" content="IE=edge"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;title&gt;Nueva pestaña&lt;/title&gt;
+  &lt;style type="text/css"&gt;
+  html {
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+  }
+  article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
+    display: block;
+  }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #212529;
+    background-color: #f9f9fb;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+  ol,
+  ul,
+  dl {
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  ol ol,
+  ul ul,
+  ol ul,
+  ul ol {
+    margin-bottom: 0;
+  }
+  a {
+    color: #007bff;
+    text-decoration: none;
+    background-color: transparent;
+  }
+
+  a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+  }
+  figure {
+    margin: 0 0 1rem;
+  }
+
+  img {
+    vertical-align: middle;
+    border-style: none;
+  }
+
+  svg {
+    overflow: hidden;
+    vertical-align: middle;
+  }
+  button {
+    border-radius: 0;
+  }
+
+  button:focus {
+    outline: 1px dotted;
+    outline: 5px auto -webkit-focus-ring-color;
+  }
+
+  input,
+  button,
+  select,
+  optgroup,
+  textarea {
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+  }
+
+  button,
+  input {
+    overflow: visible;
+  }
+
+  button,
+  select {
+    text-transform: none;
+  }
+
+  select {
+    word-wrap: normal;
+  }
+  h1, h2, h3, h4, h5, h6,
+  .h1, .h2, .h3, .h4, .h5, .h6 {
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    line-height: 1.2;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+  h1, .h1 {
+    font-size: 2.5rem;
+  }
+
+  h2, .h2 {
+    font-size: 2rem;
+  }
+
+  h3, .h3 {
+    font-size: 1.75rem;
+  }
+
+  h4, .h4 {
+    font-size: 1.5rem;
+  }
+
+  h5, .h5 {
+    font-size: 1.25rem;
+  }
+
+  h6, .h6 {
+    font-size: 1rem;
+  }
+  small,
+  .small {
+    font-size: 80%;
+    font-weight: 400;
+  }
+  .container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+
+  @media (min-width: 576px) {
+    .container {
+      max-width: 540px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .container {
+      max-width: 720px;
+    }
+  }
+
+  @media (min-width: 992px) {
+    .container {
+      max-width: 960px;
+    }
+  }
+
+  @media (min-width: 1200px) {
+    .container {
+      max-width: 1140px;
+    }
+  }
+  .table {
+    display: table;
+  }
+  .table-cell {
+    display: table-cell;
+    vertical-align: middle;
+  }
+  .vh-100{
+    height: 100vh;
+  }
+  .w-100 {
+    width: 100%;
+  }
+  .d-block {
+    display: block!important;
+  }
+
+  .float-left {
+    float: left;
+  }
+  .marks {
+      width: 100%;
+      padding-top: 10px;
+      padding-bottom: 10px;
+  }
+  .text-truncate {
+    text-overflow:ellipsis;
+    overflow:hidden;
+    width:100%;
+    text-align: center;
+    max-height: 30px!important;
+    margin:auto;
+  }
+  .marks-cards {
+      vertical-align: middle;
+      display: -webkit-box;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      padding: 10px;
+      text-align: center;
+  }
+  .card {
+    width: 23.5%;
+    height: 160px;
+    display: inline-block;
+    text-align: center;
+    margin: auto;
+    position: relative;
+  }
+  .card-dir {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    border-radius: 12px;
+    padding: 10px;
+    float: left;
+    color: #777;
+    text-decoration: none;
+  }
+  .card-dir:hover {
+    background: rgba(0,0,0,0.04);
+    text-decoration: none;
+  }
+  .card-dir-content {
+    border-radius: 8px;
+    border:solid 1px rgba(0,0,0,0.1);
+    background: #fff;
+    height: 100%;
+    width:100%;
+    position: relative;
+    overflow: hidden;
+    padding-left: 10px;
+    padding-right: 10px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.05);
+    -webkit-box-shadow:0px 0px 10px 0px rgba(0,0,0,0.05);
+  }
+  .logo {
+    height:120px;
+    width:100%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 3rem;
+    background-image: url('http://duographics.com.ec/hilsoft/AppData/logo-full.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+  .mark-img {
+    height: 30px;
+    width: 30px;
+    margin:auto;
+  }
+  @media (max-width: 991px) {
+    .card {
+      width: 23.5%;
+      height: 120px;
+    }
+  }
+  @media (max-width: 767px) {
+    .card {
+      width: 31.5%;
+      height: 120px;
+    }
+  }
+  @media (max-width: 600px) {
+    .card {
+      width: 48.5%;
+      height: 120px;
+    }
+  }
+  @media (max-width: 500px) {
+    .logo {
+      height:100px;
+      width:100%;
+    }
+    .card {
+      width: 48.5%;
+      height: 120px;
+    }
+  }
+  @media (max-width: 400px) {
+    .card {
+      width: 100%;
+      height: 120px;
+    }
+  }
+  &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;div class="container"&gt;
+    &lt;div class="marks vh-100 table"&gt;
+      &lt;div class="table-cell"&gt;
+        &lt;div class="logo"&gt;&lt;/div&gt;
+        &lt;div class="mark-cards"&gt;
+          &lt;div class="card"&gt;
+            &lt;a class="card-dir table" href="#"&gt;
+              &lt;div class="card-dir-content table-cell"&gt;
+                &lt;span class="d-block text-truncate float-left"&gt;Marcador disponible&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+
+          &lt;div class="card"&gt;
+            &lt;a class="card-dir table" href="#"&gt;
+              &lt;div class="card-dir-content table-cell"&gt;
+                &lt;span class="d-block text-truncate float-left"&gt;Marcador disponible&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+
+          &lt;div class="card"&gt;
+            &lt;a class="card-dir table" href="#"&gt;
+              &lt;div class="card-dir-content table-cell"&gt;
+                &lt;span class="d-block text-truncate float-left"&gt;Marcador disponible&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+
+          &lt;div class="card"&gt;
+            &lt;a class="card-dir table" href="#"&gt;
+              &lt;div class="card-dir-content table-cell"&gt;
+                &lt;span class="d-block text-truncate float-left"&gt;Marcador disponible&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+
+          &lt;!--- row ----&gt;
+
+          &lt;div class="card"&gt;
+            &lt;a class="card-dir table" href="#"&gt;
+              &lt;div class="card-dir-content table-cell"&gt;
+                &lt;span class="d-block text-truncate float-left"&gt;Marcador disponible&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+
+          &lt;div class="card"&gt;
+            &lt;a class="card-dir table" href="#"&gt;
+              &lt;div class="card-dir-content table-cell"&gt;
+                &lt;span class="d-block text-truncate float-left"&gt;Marcador disponible&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+
+          &lt;div class="card"&gt;
+            &lt;a class="card-dir table" href="#"&gt;
+              &lt;div class="card-dir-content table-cell"&gt;
+                &lt;span class="d-block text-truncate float-left"&gt;Marcador disponible&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+
+          &lt;div class="card"&gt;
+            &lt;a class="card-dir table" href="#"&gt;
+              &lt;div class="card-dir-content table-cell"&gt;
+                &lt;span class="d-block text-truncate float-left"&gt;Marcador disponible&lt;/span&gt;
+              &lt;/div&gt;
+            &lt;/a&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="abtab" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\abtab.txt;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="back" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\back.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clover_logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\clover_logo.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="clover_logo1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\clover_logo.PNG;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="fav" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\fav.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="forward" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\forward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="home" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\home.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ikon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ikon.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logoapp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logoapp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="newtab" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newtab.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="newtab1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\newtab.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="reload" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\reload.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="shadow" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\shadow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="viewsource" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\viewsource.html;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="wback" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wback.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wforward" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wforward.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="whome" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\whome.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wnewtab" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wnewtab.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wreload" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wreload.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="wstop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\wstop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="_stop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\stop.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+</root>
