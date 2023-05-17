@@ -334,6 +334,80 @@ Namespace My
                 Me("BookImages") = value
             End Set
         End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("249, 249, 251")>  _
+        Public Property StyleBrowser15() As Global.System.Drawing.Color
+            Get
+                Return CType(Me("StyleBrowser15"),Global.System.Drawing.Color)
+            End Get
+            Set
+                Me("StyleBrowser15") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Classic")>  _
+        Public Property Mytheme() As String
+            Get
+                Return CType(Me("Mytheme"),String)
+            End Get
+            Set
+                Me("Mytheme") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("<?xml version=""1.0"" encoding=""utf-16""?>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"<ArrayOfString xmlns:xsi=""http://www.w3."& _ 
+            "org/2001/XMLSchema-instance"" xmlns:xsd=""http://www.w3.org/2001/XMLSchema"">"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"  <s"& _ 
+            "tring>CustomTheme</string>"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"</ArrayOfString>")>  _
+        Public Property CustomTheme() As Global.System.Collections.Specialized.StringCollection
+            Get
+                Return CType(Me("CustomTheme"),Global.System.Collections.Specialized.StringCollection)
+            End Get
+            Set
+                Me("CustomTheme") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("True")>  _
+        Public Property AskforCloseTabs() As Boolean
+            Get
+                Return CType(Me("AskforCloseTabs"),Boolean)
+            End Get
+            Set
+                Me("AskforCloseTabs") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("False")>  _
+        Public Property AskforDownloads() As Boolean
+            Get
+                Return CType(Me("AskforDownloads"),Boolean)
+            End Get
+            Set
+                Me("AskforDownloads") = value
+            End Set
+        End Property
+        
+        <Global.System.Configuration.UserScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("")>  _
+        Public Property DownloadsFolder() As String
+            Get
+                Return CType(Me("DownloadsFolder"),String)
+            End Get
+            Set
+                Me("DownloadsFolder") = value
+            End Set
+        End Property
     End Class
 End Namespace
 

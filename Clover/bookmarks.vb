@@ -1,5 +1,7 @@
 ﻿Imports System.Windows.Forms
 Imports System.Reflection
+Imports System.Net
+
 Public Class bookmarks
     Inherits Form
     Public IsExecuting As Boolean = False
@@ -64,12 +66,22 @@ Public Class bookmarks
         'roundCorners(Me)
         Dim loc As New Point
         Dim frm As Form = runtimeactions.LastFormActive
+
         If frm IsNot Nothing Then
             Dim btn As Button
             btn = frm.Controls("Button6")
             loc = btn.PointToScreen(New Point(0, 0))
             Me.Location = loc
             Me.Top -= 30
+            Dim tabc As MdiTabControl.TabControl = frm.Controls("TabControl1")
+            'Dim tabp As MdiTabControl.TabPage = tabc.SelectedForm
+            Dim tabp As Form = tabc.SelectedForm
+            Dim pan As Panel = tabp.Controls("Panel2")
+            Dim btnstar As FontAwesome.Sharp.IconButton = pan.Controls("IconButton2")
+            If btnstar.IconColor = Color.Gold Then
+                Button1.Text = "Eliminar favorito"
+                Label2.Text = "Favorito añadido"
+            End If
         Else
             loc = windowbroser.Button3.PointToScreen(New Point(0, 0))
             Me.Location = loc
@@ -98,6 +110,12 @@ Public Class bookmarks
         Label3.Text = rich.Text
         Dim icox As Icon = tabs.SelectedForm.Icon
         PictureBox2.Image = icox.ToBitmap
+
+        Dim url As Uri = New Uri(Label3.Text)
+        If url.HostNameType = UriHostNameType.Dns Then
+            Dim icons = "http://" & url.Host & "/favicon.ico"
+            Label4.Text = icons
+        End If
     End Sub
 
     Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
@@ -133,11 +151,17 @@ Public Class bookmarks
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        IsExecuting = True
-        'MsgBox(IO.Directory.GetParent(IO.Directory.GetParent(My.Application.Info.DirectoryPath).ToString).ToString)
-
-
-        'Me.Close()
+        If Button1.Text = "Añadir favorito" Then
+            IsExecuting = True
+            'MsgBox(IO.Directory.GetParent(IO.Directory.GetParent(My.Application.Info.DirectoryPath).ToString).ToString)
+            InsertBookMark()
+            'Me.Close()
+        ElseIf button1.Text = "Eliminar favorito" Then
+            IsExecuting = True
+            DeleteBookMark()
+        Else
+            Return
+        End If
     End Sub
 
     Public Sub InsertBookMark()
@@ -146,58 +170,78 @@ Public Class bookmarks
             'My.Settings.TopSitesAddress.Remove(s)
             'End If
             My.Settings.BookAddress.Insert(0, Label3.Text)
-
-            If My.Settings.BookNames IsNot Nothing Then
-                'If My.Settings.TopSitesAddress.Contains(s) Then
-                'My.Settings.TopSitesAddress.Remove(s)
-                'End If
-                My.Settings.BookNames.Insert(0, RichTextBox1.Text)
-
-                If My.Settings.BookImages IsNot Nothing Then
-                    'If My.Settings.TopSitesAddress.Contains(s) Then
-                    'My.Settings.TopSitesAddress.Remove(s)
-                    'End If
-                    My.Settings.BookImages.Insert(0, Label3.Text)
-                Else
-                    My.Settings.BookImages = New System.Collections.Specialized.StringCollection From {
-                        Label3.Text
-                    }
-                End If
-
-            Else
-                My.Settings.BookNames = New System.Collections.Specialized.StringCollection From {
-                        RichTextBox1.Text
-                    }
-            End If
-
-
         Else
             My.Settings.BookAddress = New System.Collections.Specialized.StringCollection From {
                         Label3.Text
                     }
-
-            If My.Settings.BookNames IsNot Nothing Then
-                'If My.Settings.TopSitesAddress.Contains(s) Then
-                'My.Settings.TopSitesAddress.Remove(s)
-                'End If
-                My.Settings.BookNames.Insert(0, RichTextBox1.Text)
-
-                If My.Settings.BookImages IsNot Nothing Then
-                    'If My.Settings.TopSitesAddress.Contains(s) Then
-                    'My.Settings.TopSitesAddress.Remove(s)
-                    'End If
-                    My.Settings.BookImages.Insert(0, Label3.Text)
-                Else
-                    My.Settings.BookImages = New System.Collections.Specialized.StringCollection From {
-                        Label3.Text
-                    }
-                End If
-
-            Else
-                My.Settings.BookNames = New System.Collections.Specialized.StringCollection From {
-                        RichTextBox1.Text
-                    }
-            End If
         End If
+
+        If My.Settings.BookNames IsNot Nothing Then
+            'If My.Settings.TopSitesAddress.Contains(s) Then
+            'My.Settings.TopSitesAddress.Remove(s)
+            'End If
+            My.Settings.BookNames.Insert(0, RichTextBox1.Text)
+        Else
+            My.Settings.BookNames = New System.Collections.Specialized.StringCollection From {
+                    RichTextBox1.Text
+                }
+        End If
+
+        If My.Settings.BookImages IsNot Nothing Then
+            'If My.Settings.TopSitesAddress.Contains(s) Then
+            'My.Settings.TopSitesAddress.Remove(s)
+            'End If
+            My.Settings.BookImages.Insert(0, Label3.Text)
+        Else
+            My.Settings.BookImages = New System.Collections.Specialized.StringCollection From {
+                Label3.Text
+            }
+        End If
+        My.Settings.Save()
+        runtimeactions.actions = "addbookmark"
+        Me.Close()
+    End Sub
+
+    Public Sub DeleteBookMark()
+        If My.Settings.BookAddress IsNot Nothing Then
+            Dim booktodelete As String = Label3.Text
+            If My.Settings.BookAddress.Contains(booktodelete) Then
+                runtimeactions.deleteBookIndex = My.Settings.BookAddress.IndexOf(booktodelete)
+                'MsgBox(runtimeactions.deleteBookIndex & " - " & runtimeactions.deleteBookIndex + 1)
+                My.Settings.BookAddress.Remove(booktodelete)
+            Else
+                Return
+            End If
+        Else
+            Return
+        End If
+
+        If My.Settings.BookNames IsNot Nothing Then
+            Dim nametodelete As String = RichTextBox1.Text
+            If My.Settings.BookNames.Contains(nametodelete) Then
+                My.Settings.BookNames.Remove(nametodelete)
+            Else
+                Return
+            End If
+        Else
+            Return
+        End If
+
+        If My.Settings.BookImages IsNot Nothing Then
+            Dim imgtodelete As String = Label3.Text
+            If My.Settings.BookImages.Contains(imgtodelete) Then
+                My.Settings.BookImages.Remove(imgtodelete)
+            Else
+                Return
+            End If
+        Else
+            Return
+        End If
+        My.Settings.Save()
+        runtimeactions.deleteBookAdress = Label3.Text
+        runtimeactions.deleteBookName = RichTextBox1.Text
+        runtimeactions.deleteBookImg = Label3.Text
+        runtimeactions.actions = "deletebookmark"
+        Me.Close()
     End Sub
 End Class

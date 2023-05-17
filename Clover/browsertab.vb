@@ -6,6 +6,7 @@ Imports System.Text
 Imports System.Windows.Forms
 Imports System.Drawing.Drawing2D
 Imports System.Runtime.InteropServices
+Imports System.Runtime.CompilerServices
 Imports System.IO
 Imports System.Web
 Imports System.Net
@@ -15,19 +16,21 @@ Imports System.Drawing.Imaging
 Imports System.Security
 Imports System.Security.Cryptography
 Imports System.Security.Cryptography.X509Certificates
+Imports CefSharp.Fluent
 
 Public Class browsertab
 
     Inherits System.Windows.Forms.Form
     Public WithEvents _browser As ChromiumWebBrowser
     Public WithEvents _contextMenu As CloverMenuHandler
+    Public WithEvents _downloadHandler As DownloadHandler
     Public transparentPanel As TransparentPanel
     Public topadd As New List(Of String)
     Public topnam As New List(Of String)
     Public topimg As New List(Of String)
+
     Const quote As String = """"
     'Private Const html As String = aboutblankcontent
-
     Public Sub ButtonBorderRadius(ByRef buttonObj As Object, ByVal borderRadiusINT As Integer)
         Dim p As New Drawing2D.GraphicsPath()
         p.StartFigure()
@@ -45,35 +48,40 @@ Public Class browsertab
         p.CloseFigure()
         buttonObj.Region = New Region(p)
     End Sub
-    Private Sub InitializeSettings()
-        Dim settings As New CefSettings
-        settings.RegisterScheme(New CefCustomScheme() With {
-                       .SchemeName = "clover",
-                       .SchemeHandlerFactory = New LocalSchemeHandlerFactory,
-                       .IsSecure = True
-            })
 
-        CefSharp.Cef.Initialize(settings)
-
-    End Sub
     Public Sub InitializeChromium()
-
+        'Dim requestContextSettings = New RequestContextSettings With {
+        '.CachePath = CachePath
+        '}
+        'Dim ctx = RequestContext.Configure().WithSharedSettings(Cef.GetGlobalRequestContext()).WithPreference("webkit.webprefs.minimum_font_size", 24).Create()
         If Not Cef.IsInitialized Then
-            InitializeSettings()
+            windowbroser.InitializeSettings()
         End If
+
+        Dim userTempPath = System.IO.Path.GetTempPath()
+        '_browser.DownloadHandler = New DownloadHandler
+        '_browser.DownloadHandler = Fluent.DownloadHandler.AskUser(
+        'Function(chromiumBrowser, browser, downloadItem, callback)
+
 
         If runtimeactions.actions = "newtabaddress" Then
             _browser = New ChromiumWebBrowser(runtimeactions.urls)
+            '_browser.RequestContext = New RequestContext(requestContextSettings)
+            '_browser.RequestContext = ctx
+
             runtimeactions.actions = ""
         ElseIf runtimeactions.actions = "newwindowaddress" Then
             _browser = New ChromiumWebBrowser(runtimeactions.urls)
+            '_browser.RequestContext = New RequestContext(requestContextSettings)
             runtimeactions.actions = ""
         ElseIf runtimeactions.actions = "duplicatetab" Then
             If runtimeactions.urlsnt IsNot Nothing Then
                 _browser = New ChromiumWebBrowser(runtimeactions.urlsnt)
+                '_browser.RequestContext = New RequestContext(requestContextSettings)
                 runtimeactions.urlsnt = ""
             Else
                 _browser = New ChromiumWebBrowser("clover://newtab/")
+                '_browser.RequestContext = New RequestContext(requestContextSettings)
                 MsgBox("Ocurrió un error en Clover. Lo sentimos, vuelve a intentar la acción")
             End If
             runtimeactions.actions = ""
@@ -81,9 +89,11 @@ Public Class browsertab
         ElseIf runtimeactions.actions = "duplicatewindow" Then
             If runtimeactions.urlsnt IsNot Nothing Then
                 _browser = New ChromiumWebBrowser(runtimeactions.urlsnt)
+                '_browser.RequestContext = New RequestContext(requestContextSettings)
                 runtimeactions.urlsnt = ""
             Else
                 _browser = New ChromiumWebBrowser("clover://newtab/")
+                '_browser.RequestContext = New RequestContext(requestContextSettings)
                 MsgBox("Ocurrió un error en Clover. Lo sentimos, vuelve a intentar la acción")
             End If
             runtimeactions.actions = ""
@@ -91,14 +101,17 @@ Public Class browsertab
         ElseIf runtimeactions.actions = "newtabsource" Then
             If runtimeactions.urlsnt IsNot Nothing Then
                 _browser = New ChromiumWebBrowser(runtimeactions.urlsnt)
+                '_browser.RequestContext = New RequestContext(requestContextSettings)
                 runtimeactions.urlsnt = ""
             Else
                 _browser = New ChromiumWebBrowser("clover://newtab/")
+                '_browser.RequestContext = New RequestContext(requestContextSettings)
                 MsgBox("Ocurrió un error en Clover. Lo sentimos, vuelve a intentar la acción")
             End If
             runtimeactions.actions = ""
         Else
             _browser = New ChromiumWebBrowser("clover://newtab/")
+            '_browser.RequestContext = New RequestContext(requestContextSettings)
         End If
 
         AddHandler _browser.FrameLoadStart, AddressOf BrowserOnFrameLoadStart
@@ -106,6 +119,7 @@ Public Class browsertab
         AddHandler _browser.TitleChanged, AddressOf BrowserTitleChanged
         AddHandler _browser.StatusMessage, AddressOf BrowserStatusMessage
         AddHandler _browser.AddressChanged, AddressOf BrowserAddressChanged
+        AddHandler _browser.Enter, AddressOf Browser_Enter
 
         System.Console.WriteLine("*** Initializing Chromium")
 
@@ -119,13 +133,25 @@ Public Class browsertab
         _browser.MenuHandler = _contextMenu
     End Sub
 
-    Private Sub BrowserOnFrameLoadStart(sender As Object, e As FrameLoadStartEventArgs)
-        ProgressBar1.Invoke(
-            Sub()
-                ProgressBar1.Visible = True
-                ProgressBar1.Style = ProgressBarStyle.Marquee
-                ProgressBar1.Refresh()
-            End Sub)
+    Public Sub InitializeDonwloadHandler()
+        '__downloadHandler = New DownloadHandler
+        '_browser.DownloadHandler = __downloadHandler
+        'Dim pan As Panel = Me.ParentForm.Controls("PanelDownloads")
+        Dim bar As CircularProgressBar.CircularProgressBar = CircularProgressBar1
+        Dim downloadHandler As DownloadHandler = New DownloadHandler(bar, Label6, Label4, PanelDownloads, Panel1, Button13, Button12, IconPictureBox1)
+        _browser.DownloadHandler = downloadHandler
+    End Sub
+
+    Public Sub BrowserOnFrameLoadStart(sender As Object, e As FrameLoadStartEventArgs)
+        'Try
+        'ProgressBar1.Invoke(
+        'Sub()
+        'ProgressBar1.Visible = True
+        'ProgressBar1.Style = ProgressBarStyle.Marquee
+        'ProgressBar1.Refresh()
+        'End Sub)
+        'Catch ex As Exception
+        'End Try
 
 
         'If _browser.Address = "clover://newtab/" Then
@@ -146,12 +172,14 @@ Public Class browsertab
                 Label2.Text = _browser.Address
             End Sub)
 
-
     End Sub
     Private Sub Opencertificate(sender As Object)
 
     End Sub
-    Private Sub BrowserOnFrameLoadEnd(sender As Object, e As FrameLoadEndEventArgs)
+    Function ColorToHex(ByVal color As Color) As String
+        Return ColorTranslator.ToHtml(Color.FromArgb(color.ToArgb()))
+    End Function
+    Public Sub BrowserOnFrameLoadEnd(sender As Object, e As FrameLoadEndEventArgs)
         Try
             Dim url As Uri = New Uri(_browser.Address)
             If url.HostNameType = UriHostNameType.Dns Then
@@ -181,21 +209,50 @@ Public Class browsertab
             'runtimeactions.actions = ""
             'runtimeactions.urlsnt = ""
         End Try
+        'RichTextBox1.Text = _browser.Address
+        Try
+            RichTextBox1.Invoke(
+        Sub()
+            RichTextBox1.Text = _browser.Address
+        End Sub)
 
-        RichTextBox1.Invoke(
-            Sub()
-                RichTextBox1.Text = _browser.Address
-            End Sub)
-        ProgressBar1.Invoke(
-            Sub()
-                ProgressBar1.Visible = False
-            End Sub)
+            'ProgressBar1.Invoke(
+            'Sub()
+            'ProgressBar1.Visible = False
+            'End Sub)
+        Catch ex As Exception
+
+        End Try
         If _browser.Address.Contains("data:text/html;base64,") And Me.Text = "Nueva pestaña" Then
             bringlist1()
             bringlist2()
             bringlist3()
+            StyleClover()
+            'MsgBox(ColorToHex(StyleBrowser(8)))
+            Dim cardTextColor As String = ""
+            Dim logoTextColor As String = "#1E2624"
+            If My.Settings.IsDarkTheme = True Then
+                cardTextColor = " color:#fff"
+                logoTextColor = "#fff"
+            End If
+            Dim backPageColor As String = ColorToHex(StyleBrowser(15))
+            Dim backCardsColor As String = ColorToHex(StyleBrowser(14))
+            Dim scriptBackColor = "(function(){ document.body.style.cssText = 'background-color:" & backPageColor & "!important;' ; })();"
+            Dim scriptLogoTextColor1 = "(function(){ document.querySelectorAll("".st1"")[0].style.cssText = 'fill:" & logoTextColor & "!important;' ; })();"
+            Dim scriptLogoTextColor2 = "(function(){ document.querySelectorAll("".st1"")[1].style.cssText = 'fill:" & logoTextColor & "!important;' ; })();"
+            Dim scriptLogoTextColor3 = "(function(){ document.querySelectorAll("".st1"")[2].style.cssText = 'fill:" & logoTextColor & "!important;' ; })();"
+            Dim scriptLogoTextColor4 = "(function(){ document.querySelectorAll("".st1"")[3].style.cssText = 'fill:" & logoTextColor & "!important;' ; })();"
+            Dim scriptLogoTextColor5 = "(function(){ document.querySelectorAll("".st1"")[4].style.cssText = 'fill:" & logoTextColor & "!important;' ; })();"
+            Dim scriptLogoTextColor6 = "(function(){ document.querySelectorAll("".st1"")[5].style.cssText = 'fill:" & logoTextColor & "!important;' ; })();"
+            _browser.ExecuteScriptAsync(scriptLogoTextColor1)
+            _browser.ExecuteScriptAsync(scriptLogoTextColor2)
+            _browser.ExecuteScriptAsync(scriptLogoTextColor3)
+            _browser.ExecuteScriptAsync(scriptLogoTextColor4)
+            _browser.ExecuteScriptAsync(scriptLogoTextColor5)
+            _browser.ExecuteScriptAsync(scriptLogoTextColor6)
 
-
+            'MsgBox(scriptCardsColor)
+            _browser.ExecuteScriptAsync(scriptBackColor)
 
             If My.Settings.TopSitesAddress IsNot Nothing Then
                 If My.Settings.TopSitesAddress.Count > 0 Then
@@ -232,15 +289,36 @@ Public Class browsertab
                     End If
                 End If
             End If
+            Dim scriptCardsColor1 = "(function(){ document.getElementsByClassName(""card-dir-content"")[0].style.cssText = 'background:" & backCardsColor & "!important; " & cardTextColor & "'; })();"
+            Dim scriptCardsColor2 = "(function(){ document.getElementsByClassName(""card-dir-content"")[1].style.cssText = 'background:" & backCardsColor & "!important; " & cardTextColor & "'; })();"
+            Dim scriptCardsColor3 = "(function(){ document.getElementsByClassName(""card-dir-content"")[2].style.cssText = 'background:" & backCardsColor & "!important; " & cardTextColor & "'; })();"
+            Dim scriptCardsColor4 = "(function(){ document.getElementsByClassName(""card-dir-content"")[3].style.cssText = 'background:" & backCardsColor & "!important; " & cardTextColor & "'; })();"
+            Dim scriptCardsColor5 = "(function(){ document.getElementsByClassName(""card-dir-content"")[4].style.cssText = 'background:" & backCardsColor & "!important; " & cardTextColor & "'; })();"
+            Dim scriptCardsColor6 = "(function(){ document.getElementsByClassName(""card-dir-content"")[5].style.cssText = 'background:" & backCardsColor & "!important; " & cardTextColor & "'; })();"
+            Dim scriptCardsColor7 = "(function(){ document.getElementsByClassName(""card-dir-content"")[6].style.cssText = 'background:" & backCardsColor & "!important; " & cardTextColor & "'; })();"
+            Dim scriptCardsColor8 = "(function(){ document.getElementsByClassName(""card-dir-content"")[7].style.cssText = 'background:" & backCardsColor & "!important; " & cardTextColor & "'; })();"
+            'MsgBox(scriptCardsColor)
+            _browser.ExecuteScriptAsync(scriptCardsColor1)
+            _browser.ExecuteScriptAsync(scriptCardsColor2)
+            _browser.ExecuteScriptAsync(scriptCardsColor3)
+            _browser.ExecuteScriptAsync(scriptCardsColor4)
+            _browser.ExecuteScriptAsync(scriptCardsColor5)
+            _browser.ExecuteScriptAsync(scriptCardsColor6)
+            _browser.ExecuteScriptAsync(scriptCardsColor7)
+            _browser.ExecuteScriptAsync(scriptCardsColor8)
             RichTextBox1.Invoke(
-            Sub()
-                RichTextBox1.Text = "clover://newtab/"
-            End Sub)
+        Sub()
+            RichTextBox1.Text = "clover://newtab/"
+        End Sub)
         End If
-        Label2.Invoke(
-            Sub()
-                Label2.Text = _browser.Address
-            End Sub)
+        Try
+            Label2.Invoke(
+        Sub()
+            Label2.Text = _browser.Address
+        End Sub)
+        Catch ex As Exception
+
+        End Try
 
 
         'If _browser.Address.Contains("http://") Then
@@ -271,14 +349,23 @@ Public Class browsertab
         'End If
 
         Button3.Invoke(
-            Sub()
-                Button3.Visible = True
-            End Sub)
+        Sub()
+            Button3.Visible = True
+        End Sub)
         Button6.Invoke(
-            Sub()
-                Button6.Visible = False
-            End Sub)
-
+        Sub()
+            Button6.Visible = False
+        End Sub)
+        IconButton2.Invoke(
+        Sub()
+            If My.Settings.BookAddress IsNot Nothing Then
+                If My.Settings.BookAddress.Contains(_browser.Address) Then
+                    IconButton2.IconColor = Color.Gold
+                Else
+                    IconButton2.IconColor = StyleBrowser(11)
+                End If
+            End If
+        End Sub)
     End Sub
     Public Sub listview1(s As String)
         'ListBox1.Items.Add(s)
@@ -344,16 +431,20 @@ Public Class browsertab
         End If
     End Sub
     Public Sub BrowserStatusMessage(sender As Object, e As StatusMessageEventArgs)
-        Label1.Invoke(
+        Try
+            Label1.Invoke(
             Sub()
                 Label1.Text = e.Value
             End Sub)
+        Catch ex As Exception
+
+        End Try
         runtimeactions.urlscontext = e.Value
         If e.Value.Length > 0 Then
             runtimeactions.urls = e.Value
         End If
     End Sub
-    Private Sub BrowserTitleChanged(sender As Object, e As TitleChangedEventArgs)
+    Public Sub BrowserTitleChanged(sender As Object, e As TitleChangedEventArgs)
         Me.Invoke(
             Sub()
                 Me.Text = e.Title
@@ -411,7 +502,7 @@ Public Class browsertab
                 End If
             End Sub)
     End Sub
-    Private Sub BrowserAddressChanged(sender As Object, e As AddressChangedEventArgs)
+    Public Sub BrowserAddressChanged(sender As Object, e As AddressChangedEventArgs)
 
     End Sub
     Private Sub SurroundingSub()
@@ -452,14 +543,17 @@ Public Class browsertab
     End Sub
 
     Private Sub browsertab_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        Panel1.Height = Button12.Height
+
         'My.Settings.TopSitesAddress.Clear()
         'My.Settings.TopSitesName.Clear()
         'My.Settings.TopSitesImages.Clear()
         'My.Settings.Save()
-
+        CheckForIllegalCrossThreadCalls = False
         Me.ContextMenuStrip1.Renderer = New ContextRender()
         Me.ContextMenuStrip2.Renderer = New ContextRender()
         InitializeChromium()
+        InitializeDonwloadHandler()
         InitializeContextMenu()
         StyleClover()
         Panel2.BackColor = StyleBrowser(7)
@@ -528,11 +622,95 @@ Public Class browsertab
         IconButton2.FlatAppearance.MouseOverBackColor = StyleBrowser(12)
         IconButton2.FlatAppearance.MouseDownBackColor = StyleBrowser(12)
 
+
+
         Label1.ForeColor = StyleBrowser(11)
         Label1.BackColor = StyleBrowser(7)
         Me.ActiveControl = RichTextBox1
-    End Sub
 
+
+        PanelDownloads.BackColor = StyleBrowser(7)
+        IconButton3.IconColor = StyleBrowser(11)
+        IconButton3.BackColor = StyleBrowser(7)
+        IconButton3.FlatAppearance.MouseOverBackColor = StyleBrowser(10)
+        IconButton3.FlatAppearance.MouseDownBackColor = StyleBrowser(10)
+
+        For I As Integer = 0 To PanelDownloads.Controls.Count - 1
+            Dim controlsFound = PanelDownloads.Controls.Item(I)
+            'controlsFound.ForeColor = StyleBrowser(11)
+            If TypeOf controlsFound Is Label Then
+                Dim AllLabels As Label = PanelDownloads.Controls.Item(I)
+                AllLabels.ForeColor = StyleBrowser(11)
+            End If
+            If TypeOf controlsFound Is Button Then
+                Dim AllButtons As Button = PanelDownloads.Controls.Item(I)
+                AllButtons.BackColor = StyleBrowser(7)
+                AllButtons.ForeColor = StyleBrowser(11)
+                AllButtons.FlatAppearance.MouseOverBackColor = StyleBrowser(10)
+                AllButtons.FlatAppearance.MouseDownBackColor = StyleBrowser(10)
+            End If
+            If TypeOf controlsFound Is FontAwesome.Sharp.IconPictureBox Then
+                Dim AllPics As FontAwesome.Sharp.IconPictureBox = PanelDownloads.Controls.Item(I)
+                AllPics.BackColor = Color.Transparent
+                AllPics.ForeColor = StyleBrowser(11)
+            End If
+
+        Next
+
+
+        If runtimeactions.LoadStart = True Then
+            LoadMarks()
+        End If
+    End Sub
+    Public Sub LoadMarks()
+        'My.Settings.BookAddress.Clear()
+        'My.Settings.BookNames.Clear()
+        'My.Settings.BookImages.Clear()
+        'My.Settings.Save()
+        ToolStrip1.Invoke(
+          Sub()
+              ToolStrip1.Items.Clear()
+          End Sub)
+
+        If My.Settings.BookAddress IsNot Nothing Then
+            Dim count As Integer = (My.Settings.BookAddress.Count - 1)
+            For a As Integer = 0 To count
+                Dim fav = My.Resources.clover_logo1
+                Dim url As Uri = New Uri(My.Settings.BookAddress.Item(a))
+                If url.HostNameType = UriHostNameType.Dns Then
+                    Dim icons = "http://" & url.Host & "/favicon.ico"
+                    Try
+                        Dim req As System.Net.WebRequest = System.Net.HttpWebRequest.Create(icons)
+                        Dim res As System.Net.HttpWebResponse = req.GetResponse()
+                        Dim col As WebHeaderCollection = res.Headers
+                        Dim stream As System.IO.Stream = res.GetResponseStream()
+                        Dim favpr = Image.FromStream(stream)
+                        Dim favpr2 As Bitmap = favpr
+                        fav = favpr2
+
+                    Catch ex As Exception
+                        fav = My.Resources.clover_logo1
+                    End Try
+                Else
+                    fav = My.Resources.clover_logo1
+                End If
+
+                Dim itm As New ToolStripButton With {
+                                    .Image = fav,
+                                    .Text = My.Settings.BookNames.Item(a),
+                                    .ToolTipText = My.Settings.BookAddress.Item(a),
+                                    .Name = "BookItem" & a + 1
+                                    }
+                ToolStrip1.Invoke(
+                                Sub()
+                                    ToolStrip1.Items.Add(itm)
+                                    'MsgBox("JAJA")
+                                End Sub)
+                'MsgBox(itm.Name)
+                AddHandler itm.Click, AddressOf HandleDynamicBookMarkButtonClick
+            Next
+        End If
+    End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         If _browser IsNot Nothing AndAlso _browser.CanGoBack Then
             _browser.Back()
@@ -778,6 +956,20 @@ Public Class browsertab
         RichTextBox1.Text = My.Settings.TopSitesAddress.Item(btn.Name)
         Panel3.Visible = False
     End Sub
+    Public Sub HandleDynamicBookMarkButtonClick(ByVal sender As Object, ByVal e As EventArgs)
+        Dim btn As ToolStripButton = DirectCast(sender, ToolStripButton)
+        RichTextBox1.Text = btn.ToolTipText
+        'MsgBox(btn.Name & " - " & btn.ToolTipText)
+        _browser.Load(btn.ToolTipText)
+        'RichTextBox1.Text = btn.ToolTipText
+    End Sub
+    Public Sub BookMarkWinTo(btn As ToolStripButton)
+        RichTextBox1.Text = btn.ToolTipText
+        _browser.Load(btn.ToolTipText)
+        runtimeactions.actionBook = ""
+        runtimeactions.booktoread = Nothing
+        runtimeactions.actionBookForm = Nothing
+    End Sub
     Private Sub Panel3_Paint(sender As Object, e As PaintEventArgs) Handles Panel3.Paint
         ButtonBorderRadius(sender, 15)
         'ControlPaint.DrawBorder(e.Graphics, Panel3.ClientRectangle, Color.Gainsboro, ButtonBorderStyle.Inset)
@@ -791,7 +983,6 @@ Public Class browsertab
     End Sub
 
     Private Sub Button5_Click(sender As Object, e As EventArgs) Handles Button5.Click
-        Dim menuform As New clMenu
         'clMenu.Location = Button11.Location
         'MsgBox(windowbroser.Controls.Item(0).ToString)
         clMenu.Show()
@@ -851,5 +1042,177 @@ Public Class browsertab
 
     Private Sub IconButton2_Click(sender As Object, e As EventArgs) Handles IconButton2.Click
         bookmarks.Show()
+    End Sub
+
+    Private Sub browsertab_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        'oIf runtimeactions.actions = "end" Then
+        'CefSharp.Cef.Shutdown()
+        'End If
+        'CefSharp.Cef.Shutdown()
+    End Sub
+
+    Private Sub browsertab_Deactivate(sender As Object, e As EventArgs) Handles MyBase.Deactivate
+        ContextMenuStrip1.Close()
+        ContextMenuStrip2.Close()
+    End Sub
+
+    Private Sub Timer1_Tick(sender As Object, e As EventArgs) Handles Timer1.Tick
+        If runtimeactions.actions = "changethemebrowser" Then
+            StyleClover()
+            Panel2.BackColor = StyleBrowser(7)
+            TextBoxParent.BackColor = StyleBrowser(8)
+            Me.BackColor = StyleBrowser(0)
+            Button1.BackColor = StyleBrowser(9)
+            Button2.BackColor = StyleBrowser(9)
+            Button3.BackColor = StyleBrowser(9)
+            Button4.BackColor = StyleBrowser(9)
+            Button5.BackColor = StyleBrowser(9)
+            Button6.BackColor = StyleBrowser(9)
+            Button1.FlatAppearance.MouseOverBackColor = StyleBrowser(10)
+            Button1.FlatAppearance.MouseDownBackColor = StyleBrowser(10)
+            Button1.FlatAppearance.BorderColor = StyleBrowser(7)
+
+            Button2.FlatAppearance.MouseOverBackColor = StyleBrowser(10)
+            Button2.FlatAppearance.MouseDownBackColor = StyleBrowser(10)
+            Button2.FlatAppearance.BorderColor = StyleBrowser(7)
+
+            Button3.FlatAppearance.MouseOverBackColor = StyleBrowser(10)
+            Button3.FlatAppearance.MouseDownBackColor = StyleBrowser(10)
+            Button3.FlatAppearance.BorderColor = StyleBrowser(7)
+
+            Button4.FlatAppearance.MouseOverBackColor = StyleBrowser(10)
+            Button4.FlatAppearance.MouseDownBackColor = StyleBrowser(10)
+            Button4.FlatAppearance.BorderColor = StyleBrowser(7)
+
+            Button5.FlatAppearance.MouseOverBackColor = StyleBrowser(10)
+            Button5.FlatAppearance.MouseDownBackColor = StyleBrowser(10)
+            Button5.FlatAppearance.BorderColor = StyleBrowser(7)
+
+            Button6.FlatAppearance.MouseOverBackColor = StyleBrowser(10)
+            Button6.FlatAppearance.MouseDownBackColor = StyleBrowser(10)
+            Button6.FlatAppearance.BorderColor = StyleBrowser(7)
+
+            If My.Settings.IsDarkTheme = False Then
+                Button1.BackgroundImage = My.Resources.back
+                Button2.BackgroundImage = My.Resources.forward
+                Button3.BackgroundImage = My.Resources.reload
+                Button4.BackgroundImage = My.Resources.home
+                Button6.BackgroundImage = My.Resources._stop
+            Else
+                Button1.BackgroundImage = My.Resources.wback
+                Button2.BackgroundImage = My.Resources.wforward
+                Button3.BackgroundImage = My.Resources.wreload
+                Button4.BackgroundImage = My.Resources.whome
+                Button6.BackgroundImage = My.Resources.wstop
+            End If
+
+            IconButton1.IconColor = StyleBrowser(11)
+            IconButton2.IconColor = StyleBrowser(11)
+
+            IconButton1.BackColor = StyleBrowser(8)
+            IconButton2.BackColor = StyleBrowser(8)
+
+            IconButton1.FlatAppearance.BorderColor = StyleBrowser(8)
+            IconButton2.FlatAppearance.BorderColor = StyleBrowser(8)
+
+            TextBoxParent.FlatAppearance.BorderColor = StyleBrowser(8)
+            RichTextBox1.BackColor = StyleBrowser(8)
+            RichTextBox1.ForeColor = StyleBrowser(13)
+
+            IconButton1.FlatAppearance.MouseOverBackColor = StyleBrowser(12)
+            IconButton1.FlatAppearance.MouseDownBackColor = StyleBrowser(12)
+
+            IconButton2.FlatAppearance.MouseOverBackColor = StyleBrowser(12)
+            IconButton2.FlatAppearance.MouseDownBackColor = StyleBrowser(12)
+
+            Label1.ForeColor = StyleBrowser(11)
+            Label1.BackColor = StyleBrowser(7)
+            Me.ActiveControl = RichTextBox1
+
+
+            PanelDownloads.BackColor = StyleBrowser(7)
+            IconButton3.IconColor = StyleBrowser(11)
+            IconButton3.BackColor = StyleBrowser(7)
+            IconButton3.FlatAppearance.MouseOverBackColor = StyleBrowser(10)
+            IconButton3.FlatAppearance.MouseDownBackColor = StyleBrowser(10)
+
+            For I As Integer = 0 To PanelDownloads.Controls.Count - 1
+                Dim controlsFound = PanelDownloads.Controls.Item(I)
+                'controlsFound.ForeColor = StyleBrowser(11)
+                If TypeOf controlsFound Is Label Then
+                    Dim AllLabels As Label = PanelDownloads.Controls.Item(I)
+                    AllLabels.ForeColor = StyleBrowser(11)
+                End If
+                If TypeOf controlsFound Is Button Then
+                    Dim AllButtons As Button = PanelDownloads.Controls.Item(I)
+                    AllButtons.BackColor = StyleBrowser(7)
+                    AllButtons.ForeColor = StyleBrowser(11)
+                    AllButtons.FlatAppearance.MouseOverBackColor = StyleBrowser(10)
+                    AllButtons.FlatAppearance.MouseDownBackColor = StyleBrowser(10)
+                End If
+                If TypeOf controlsFound Is FontAwesome.Sharp.IconPictureBox Then
+                    Dim AllPics As FontAwesome.Sharp.IconPictureBox = PanelDownloads.Controls.Item(I)
+                    AllPics.BackColor = Color.Transparent
+                    AllPics.ForeColor = StyleBrowser(11)
+                End If
+
+            Next
+
+        End If
+
+        If runtimeactions.actions = "addbookmark" Then
+            If My.Settings.BookAddress IsNot Nothing Then
+                If My.Settings.BookAddress.Contains(_browser.Address) Then
+                    IconButton2.IconColor = Color.Gold
+                Else
+                    IconButton2.IconColor = StyleBrowser(11)
+                End If
+            End If
+        End If
+        If runtimeactions.actions = "deletebookmark" Then
+            If My.Settings.BookAddress IsNot Nothing Then
+                If My.Settings.BookAddress.Contains(_browser.Address) Then
+                    IconButton2.IconColor = Color.Gold
+                Else
+                    IconButton2.IconColor = StyleBrowser(11)
+                End If
+            End If
+        End If
+
+
+        If actionBook = "" Then
+        Else
+            'Dim browsertab As browsertab = Me
+            If runtimeactions.actionBookForm IsNot Nothing Then
+                If runtimeactions.actionBookForm Is Me Then
+                    If runtimeactions.actionBook = "loadBookMarkToWin" Then
+                        If runtimeactions.booktoread IsNot Nothing Then
+                            Dim btn As ToolStripButton = runtimeactions.booktoread
+                            BookMarkWinTo(btn)
+                        End If
+                    End If
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub Browser_Enter(sender As Object, e As EventArgs)
+        ContextMenuStrip1.Close()
+        ContextMenuStrip2.Close()
+    End Sub
+
+    Private Sub SaveHomePage_Paint(sender As Object, e As PaintEventArgs) Handles SaveHomePage.Paint
+        ButtonBorderRadius(sender, 15)
+    End Sub
+
+    Private Sub IconButton3_Click(sender As Object, e As EventArgs) Handles IconButton3.Click
+        Panel1.Height = Button12.Height
+        Label6.Visible = False
+        CircularProgressBar1.Visible = False
+        Label4.Text = ""
+    End Sub
+
+    Private Sub IconButton3_Paint(sender As Object, e As PaintEventArgs) Handles IconButton3.Paint
+        ButtonBorderRadius(sender, 15)
     End Sub
 End Class

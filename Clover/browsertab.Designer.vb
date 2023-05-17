@@ -65,12 +65,23 @@ Partial Class browsertab
         Me.ContextMenuStrip3 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.Timer2 = New System.Windows.Forms.Timer(Me.components)
         Me.SaveFileDialog1 = New System.Windows.Forms.SaveFileDialog()
+        Me.PanelDownloads = New System.Windows.Forms.Panel()
+        Me.IconButton3 = New FontAwesome.Sharp.IconButton()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.CircularProgressBar1 = New CircularProgressBar.CircularProgressBar()
+        Me.Button12 = New System.Windows.Forms.Button()
+        Me.Button13 = New System.Windows.Forms.Button()
+        Me.SaveHomePage = New System.Windows.Forms.Button()
+        Me.IconPictureBox1 = New FontAwesome.Sharp.IconPictureBox()
         Me.Panel1.SuspendLayout()
         Me.Panel2.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.ContextMenuStrip2.SuspendLayout()
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.ToolStrip1.SuspendLayout()
+        Me.PanelDownloads.SuspendLayout()
+        CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Panel1
@@ -79,9 +90,9 @@ Partial Class browsertab
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Panel1.Controls.Add(Me.Label1)
-        Me.Panel1.Location = New System.Drawing.Point(0, 81)
+        Me.Panel1.Location = New System.Drawing.Point(0, 78)
         Me.Panel1.Name = "Panel1"
-        Me.Panel1.Size = New System.Drawing.Size(800, 397)
+        Me.Panel1.Size = New System.Drawing.Size(800, 322)
         Me.Panel1.TabIndex = 0
         '
         'Label1
@@ -90,7 +101,7 @@ Partial Class browsertab
         Me.Label1.AutoSize = True
         Me.Label1.BackColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(233, Byte), Integer))
         Me.Label1.Font = New System.Drawing.Font("Open Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
-        Me.Label1.Location = New System.Drawing.Point(-3, 373)
+        Me.Label1.Location = New System.Drawing.Point(-3, 298)
         Me.Label1.Name = "Label1"
         Me.Label1.Padding = New System.Windows.Forms.Padding(6, 3, 3, 3)
         Me.Label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes
@@ -121,7 +132,7 @@ Partial Class browsertab
         Me.Panel2.Controls.Add(Me.ToolStrip1)
         Me.Panel2.Location = New System.Drawing.Point(0, -1)
         Me.Panel2.Name = "Panel2"
-        Me.Panel2.Size = New System.Drawing.Size(800, 81)
+        Me.Panel2.Size = New System.Drawing.Size(800, 78)
         Me.Panel2.TabIndex = 29
         '
         'ContextMenuStrip1
@@ -406,7 +417,7 @@ Partial Class browsertab
         '
         Me.ProgressBar1.Anchor = CType(((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.ProgressBar1.Location = New System.Drawing.Point(0, 76)
+        Me.ProgressBar1.Location = New System.Drawing.Point(0, 73)
         Me.ProgressBar1.Name = "ProgressBar1"
         Me.ProgressBar1.Size = New System.Drawing.Size(800, 18)
         Me.ProgressBar1.TabIndex = 6
@@ -435,7 +446,7 @@ Partial Class browsertab
         Me.ToolStrip1.Dock = System.Windows.Forms.DockStyle.None
         Me.ToolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden
         Me.ToolStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripButton1})
-        Me.ToolStrip1.Location = New System.Drawing.Point(7, 56)
+        Me.ToolStrip1.Location = New System.Drawing.Point(7, 54)
         Me.ToolStrip1.Name = "ToolStrip1"
         Me.ToolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.ToolStrip1.Size = New System.Drawing.Size(785, 28)
@@ -447,13 +458,13 @@ Partial Class browsertab
         Me.ToolStripButton1.Image = CType(resources.GetObject("ToolStripButton1.Image"), System.Drawing.Image)
         Me.ToolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.ToolStripButton1.Name = "ToolStripButton1"
-        Me.ToolStripButton1.Size = New System.Drawing.Size(119, 25)
-        Me.ToolStripButton1.Text = "Google imágenes"
+        Me.ToolStripButton1.Size = New System.Drawing.Size(89, 25)
+        Me.ToolStripButton1.Text = "Marcadores"
         '
         'Timer1
         '
         Me.Timer1.Enabled = True
-        Me.Timer1.Interval = 10000
+        Me.Timer1.Interval = 10
         '
         'ToolTip1
         '
@@ -546,10 +557,156 @@ Partial Class browsertab
         Me.ContextMenuStrip3.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
         Me.ContextMenuStrip3.Size = New System.Drawing.Size(61, 4)
         '
+        'PanelDownloads
+        '
+        Me.PanelDownloads.Anchor = CType(((System.Windows.Forms.AnchorStyles.Bottom Or System.Windows.Forms.AnchorStyles.Left) _
+            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.PanelDownloads.Controls.Add(Me.IconPictureBox1)
+        Me.PanelDownloads.Controls.Add(Me.Label6)
+        Me.PanelDownloads.Controls.Add(Me.SaveHomePage)
+        Me.PanelDownloads.Controls.Add(Me.IconButton3)
+        Me.PanelDownloads.Controls.Add(Me.Label4)
+        Me.PanelDownloads.Controls.Add(Me.CircularProgressBar1)
+        Me.PanelDownloads.Location = New System.Drawing.Point(0, 400)
+        Me.PanelDownloads.Name = "PanelDownloads"
+        Me.PanelDownloads.Size = New System.Drawing.Size(800, 78)
+        Me.PanelDownloads.TabIndex = 39
+        '
+        'IconButton3
+        '
+        Me.IconButton3.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.IconButton3.BackColor = System.Drawing.Color.Transparent
+        Me.IconButton3.FlatAppearance.BorderColor = System.Drawing.Color.White
+        Me.IconButton3.FlatAppearance.BorderSize = 0
+        Me.IconButton3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(CType(CType(229, Byte), Integer), CType(CType(226, Byte), Integer), CType(CType(222, Byte), Integer))
+        Me.IconButton3.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.IconButton3.IconChar = FontAwesome.Sharp.IconChar.WindowClose
+        Me.IconButton3.IconColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.IconButton3.IconFont = FontAwesome.Sharp.IconFont.Solid
+        Me.IconButton3.IconSize = 28
+        Me.IconButton3.Location = New System.Drawing.Point(758, 24)
+        Me.IconButton3.Name = "IconButton3"
+        Me.IconButton3.Padding = New System.Windows.Forms.Padding(0, 4, 0, 0)
+        Me.IconButton3.Size = New System.Drawing.Size(31, 30)
+        Me.IconButton3.TabIndex = 40
+        Me.IconButton3.TextAlign = System.Drawing.ContentAlignment.TopCenter
+        Me.IconButton3.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage
+        Me.IconButton3.UseVisualStyleBackColor = False
+        '
+        'Label4
+        '
+        Me.Label4.BackColor = System.Drawing.Color.Transparent
+        Me.Label4.Font = New System.Drawing.Font("Segoe UI Semilight", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label4.ForeColor = System.Drawing.Color.Black
+        Me.Label4.Location = New System.Drawing.Point(66, 38)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.Label4.Size = New System.Drawing.Size(242, 27)
+        Me.Label4.TabIndex = 39
+        Me.Label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'Label6
+        '
+        Me.Label6.BackColor = System.Drawing.Color.Transparent
+        Me.Label6.Font = New System.Drawing.Font("Segoe UI", 12.0!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.Label6.ForeColor = System.Drawing.Color.Black
+        Me.Label6.Location = New System.Drawing.Point(66, 15)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Padding = New System.Windows.Forms.Padding(5, 0, 0, 0)
+        Me.Label6.Size = New System.Drawing.Size(198, 27)
+        Me.Label6.TabIndex = 38
+        Me.Label6.Text = "Nombre archivo"
+        Me.Label6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        Me.Label6.Visible = False
+        '
+        'CircularProgressBar1
+        '
+        Me.CircularProgressBar1.AnimationFunction = WinFormAnimation.KnownAnimationFunctions.CircularEaseOut
+        Me.CircularProgressBar1.AnimationSpeed = 500
+        Me.CircularProgressBar1.BackColor = System.Drawing.Color.Transparent
+        Me.CircularProgressBar1.Font = New System.Drawing.Font("Segoe UI", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.CircularProgressBar1.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
+        Me.CircularProgressBar1.InnerColor = System.Drawing.Color.Transparent
+        Me.CircularProgressBar1.InnerMargin = 2
+        Me.CircularProgressBar1.InnerWidth = -1
+        Me.CircularProgressBar1.Location = New System.Drawing.Point(12, 15)
+        Me.CircularProgressBar1.MarqueeAnimationSpeed = 2000
+        Me.CircularProgressBar1.Name = "CircularProgressBar1"
+        Me.CircularProgressBar1.OuterColor = System.Drawing.Color.White
+        Me.CircularProgressBar1.OuterMargin = -25
+        Me.CircularProgressBar1.OuterWidth = 26
+        Me.CircularProgressBar1.ProgressColor = System.Drawing.Color.Green
+        Me.CircularProgressBar1.ProgressWidth = 3
+        Me.CircularProgressBar1.SecondaryFont = New System.Drawing.Font("Microsoft Sans Serif", 36.0!)
+        Me.CircularProgressBar1.Size = New System.Drawing.Size(48, 48)
+        Me.CircularProgressBar1.StartAngle = 270
+        Me.CircularProgressBar1.SubscriptColor = System.Drawing.Color.FromArgb(CType(CType(166, Byte), Integer), CType(CType(166, Byte), Integer), CType(CType(166, Byte), Integer))
+        Me.CircularProgressBar1.SubscriptMargin = New System.Windows.Forms.Padding(10, -35, 0, 0)
+        Me.CircularProgressBar1.SubscriptText = ""
+        Me.CircularProgressBar1.SuperscriptColor = System.Drawing.Color.FromArgb(CType(CType(166, Byte), Integer), CType(CType(166, Byte), Integer), CType(CType(166, Byte), Integer))
+        Me.CircularProgressBar1.SuperscriptMargin = New System.Windows.Forms.Padding(10, 35, 0, 0)
+        Me.CircularProgressBar1.SuperscriptText = ""
+        Me.CircularProgressBar1.TabIndex = 37
+        Me.CircularProgressBar1.TextMargin = New System.Windows.Forms.Padding(0, 2, 0, 0)
+        Me.CircularProgressBar1.Visible = False
+        '
+        'Button12
+        '
+        Me.Button12.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.Button12.Location = New System.Drawing.Point(401, 78)
+        Me.Button12.Name = "Button12"
+        Me.Button12.Size = New System.Drawing.Size(15, 399)
+        Me.Button12.TabIndex = 42
+        Me.Button12.Text = "Alto Tabs sin Desc"
+        Me.Button12.UseVisualStyleBackColor = True
+        Me.Button12.Visible = False
+        '
+        'Button13
+        '
+        Me.Button13.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom), System.Windows.Forms.AnchorStyles)
+        Me.Button13.Location = New System.Drawing.Point(385, 78)
+        Me.Button13.Name = "Button13"
+        Me.Button13.Size = New System.Drawing.Size(10, 322)
+        Me.Button13.TabIndex = 41
+        Me.Button13.Text = "Alto Tabs con Desc"
+        Me.Button13.UseVisualStyleBackColor = True
+        Me.Button13.Visible = False
+        '
+        'SaveHomePage
+        '
+        Me.SaveHomePage.Anchor = CType((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
+        Me.SaveHomePage.FlatAppearance.BorderSize = 0
+        Me.SaveHomePage.FlatStyle = System.Windows.Forms.FlatStyle.Flat
+        Me.SaveHomePage.Font = New System.Drawing.Font("Open Sans", 11.25!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
+        Me.SaveHomePage.Location = New System.Drawing.Point(637, 19)
+        Me.SaveHomePage.Name = "SaveHomePage"
+        Me.SaveHomePage.Size = New System.Drawing.Size(115, 39)
+        Me.SaveHomePage.TabIndex = 41
+        Me.SaveHomePage.Text = "Ver Descargas"
+        Me.SaveHomePage.UseVisualStyleBackColor = True
+        '
+        'IconPictureBox1
+        '
+        Me.IconPictureBox1.BackColor = System.Drawing.SystemColors.Control
+        Me.IconPictureBox1.ForeColor = System.Drawing.SystemColors.ControlText
+        Me.IconPictureBox1.IconChar = FontAwesome.Sharp.IconChar.File
+        Me.IconPictureBox1.IconColor = System.Drawing.SystemColors.ControlText
+        Me.IconPictureBox1.IconFont = FontAwesome.Sharp.IconFont.[Auto]
+        Me.IconPictureBox1.IconSize = 20
+        Me.IconPictureBox1.Location = New System.Drawing.Point(25, 29)
+        Me.IconPictureBox1.Name = "IconPictureBox1"
+        Me.IconPictureBox1.Padding = New System.Windows.Forms.Padding(2, 2, 0, 0)
+        Me.IconPictureBox1.Size = New System.Drawing.Size(22, 22)
+        Me.IconPictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize
+        Me.IconPictureBox1.TabIndex = 42
+        Me.IconPictureBox1.TabStop = False
+        '
         'browsertab
         '
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None
         Me.ClientSize = New System.Drawing.Size(800, 478)
+        Me.Controls.Add(Me.Button12)
+        Me.Controls.Add(Me.Button13)
         Me.Controls.Add(Me.Button11)
         Me.Controls.Add(Me.Panel3)
         Me.Controls.Add(Me.Button10)
@@ -558,6 +715,7 @@ Partial Class browsertab
         Me.Controls.Add(Me.Button7)
         Me.Controls.Add(Me.Panel2)
         Me.Controls.Add(Me.Panel1)
+        Me.Controls.Add(Me.PanelDownloads)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
         Me.Name = "browsertab"
         Me.Text = "Nueva pestaña"
@@ -570,6 +728,9 @@ Partial Class browsertab
         CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ToolStrip1.ResumeLayout(False)
         Me.ToolStrip1.PerformLayout()
+        Me.PanelDownloads.ResumeLayout(False)
+        Me.PanelDownloads.PerformLayout()
+        CType(Me.IconPictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -615,4 +776,13 @@ Partial Class browsertab
     Friend WithEvents Timer2 As Timer
     Friend WithEvents Label3 As Label
     Friend WithEvents SaveFileDialog1 As SaveFileDialog
+    Friend WithEvents PanelDownloads As Panel
+    Friend WithEvents IconButton3 As FontAwesome.Sharp.IconButton
+    Friend WithEvents Label4 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents CircularProgressBar1 As CircularProgressBar.CircularProgressBar
+    Friend WithEvents Button12 As Button
+    Friend WithEvents Button13 As Button
+    Friend WithEvents SaveHomePage As Button
+    Friend WithEvents IconPictureBox1 As FontAwesome.Sharp.IconPictureBox
 End Class

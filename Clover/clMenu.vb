@@ -162,6 +162,21 @@ Public Class clMenu
         Dim newbrowser As New browsertab
         Dim tabs As MdiTabControl.TabControl
         tabs = frm.Controls("TabControl1")
+
+
+        If tabs.TabPages.Count >= 1 Then
+            Dim pan As Panel = newbrowser.Controls("Panel2")
+            Dim tools As ToolStrip = pan.Controls("ToolStrip1")
+
+            Dim firsttab As MdiTabControl.TabPage = tabs.TabPages(0)
+            Dim firstform As Form = firsttab.Form
+            Dim firstpan As Panel = firstform.Controls("Panel2")
+            Dim firsttools As ToolStrip = firstpan.Controls("ToolStrip1")
+            tools.Items.Clear()
+            tools.Items.AddRange(firsttools.Items)
+            runtimeactions.LoadStart = False
+        End If
+
         tabs.TabPages.Add(newbrowser)
     End Sub
 
@@ -225,5 +240,9 @@ Public Class clMenu
 
     Private Sub Button12_Click(sender As Object, e As EventArgs) Handles Button12.Click
         AboutClover.Show()
+    End Sub
+
+    Private Sub Button9_Click(sender As Object, e As EventArgs) Handles Button9.Click
+        settingswindow.Show()
     End Sub
 End Class

@@ -50,7 +50,9 @@ Public Class Dwm
         End Sub
 
         Public Function ToRectangle() As Rectangle
-            Return New Rectangle(Me.left, Me.top, Me.right - Me.left, Me.bottom - Me.top)
+            Dim nonClientAreaHeight = SystemInformation.CaptionHeight + 10
+            Return New Rectangle(Me.left + SystemInformation.HorizontalResizeBorderThickness, Me.top + SystemInformation.HorizontalResizeBorderThickness, Me.Width, nonClientAreaHeight - SystemInformation.VerticalResizeBorderThickness)
+            'Return New Rectangle(Me.left, Me.top, Me.right - Me.left, Me.bottom - Me.top)
         End Function
 
         ' Properties

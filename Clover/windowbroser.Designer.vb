@@ -63,7 +63,7 @@ Partial Class windowbroser
         Me.TabControl1.Location = New System.Drawing.Point(0, 0)
         Me.TabControl1.MenuRenderer = Nothing
         Me.TabControl1.Name = "TabControl1"
-        Me.TabControl1.Size = New System.Drawing.Size(800, 577)
+        Me.TabControl1.Size = New System.Drawing.Size(800, 576)
         Me.TabControl1.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.[Default]
         Me.TabControl1.TabBackHighColor = System.Drawing.Color.FromArgb(CType(CType(238, Byte), Integer), CType(CType(236, Byte), Integer), CType(CType(233, Byte), Integer))
         Me.TabControl1.TabBackHighColorDisabled = System.Drawing.Color.FromArgb(CType(CType(216, Byte), Integer), CType(CType(214, Byte), Integer), CType(CType(211, Byte), Integer))
@@ -99,11 +99,12 @@ Partial Class windowbroser
         Me.ContextMenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.NuevaPestañaToolStripMenuItem, Me.CerrarPestañaToolStripMenuItem, Me.DuplicarToolStripMenuItem, Me.AbrirEnUnaNuevaVentanaToolStripMenuItem})
         Me.ContextMenuStrip1.Name = "ContextMenuStrip1"
         Me.ContextMenuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System
-        Me.ContextMenuStrip1.Size = New System.Drawing.Size(412, 121)
+        Me.ContextMenuStrip1.Size = New System.Drawing.Size(379, 113)
         '
         'NuevaPestañaToolStripMenuItem
         '
         Me.NuevaPestañaToolStripMenuItem.BackColor = System.Drawing.Color.White
+        Me.NuevaPestañaToolStripMenuItem.Font = New System.Drawing.Font("Open Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.NuevaPestañaToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.NuevaPestañaToolStripMenuItem.Image = Global.Clover.My.Resources.Resources.newtab
         Me.NuevaPestañaToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopRight
@@ -111,37 +112,40 @@ Partial Class windowbroser
         Me.NuevaPestañaToolStripMenuItem.Name = "NuevaPestañaToolStripMenuItem"
         Me.NuevaPestañaToolStripMenuItem.Padding = New System.Windows.Forms.Padding(3)
         Me.NuevaPestañaToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.T), System.Windows.Forms.Keys)
-        Me.NuevaPestañaToolStripMenuItem.Size = New System.Drawing.Size(417, 28)
+        Me.NuevaPestañaToolStripMenuItem.Size = New System.Drawing.Size(384, 26)
         Me.NuevaPestañaToolStripMenuItem.Text = "Nueva pestaña"
         '
         'CerrarPestañaToolStripMenuItem
         '
+        Me.CerrarPestañaToolStripMenuItem.Font = New System.Drawing.Font("Open Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.CerrarPestañaToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.CerrarPestañaToolStripMenuItem.Image = Global.Clover.My.Resources.Resources._stop
         Me.CerrarPestañaToolStripMenuItem.ImageAlign = System.Drawing.ContentAlignment.TopRight
         Me.CerrarPestañaToolStripMenuItem.Margin = New System.Windows.Forms.Padding(5, 0, 0, 0)
         Me.CerrarPestañaToolStripMenuItem.Name = "CerrarPestañaToolStripMenuItem"
         Me.CerrarPestañaToolStripMenuItem.Padding = New System.Windows.Forms.Padding(3)
-        Me.CerrarPestañaToolStripMenuItem.Size = New System.Drawing.Size(417, 28)
+        Me.CerrarPestañaToolStripMenuItem.Size = New System.Drawing.Size(384, 26)
         Me.CerrarPestañaToolStripMenuItem.Text = "Cerrar pestaña actual"
         '
         'DuplicarToolStripMenuItem
         '
+        Me.DuplicarToolStripMenuItem.Font = New System.Drawing.Font("Open Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.DuplicarToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.DuplicarToolStripMenuItem.Margin = New System.Windows.Forms.Padding(5, 0, 0, 0)
         Me.DuplicarToolStripMenuItem.Name = "DuplicarToolStripMenuItem"
         Me.DuplicarToolStripMenuItem.Padding = New System.Windows.Forms.Padding(3)
-        Me.DuplicarToolStripMenuItem.Size = New System.Drawing.Size(417, 28)
+        Me.DuplicarToolStripMenuItem.Size = New System.Drawing.Size(384, 26)
         Me.DuplicarToolStripMenuItem.Text = "Duplicar pestaña actual"
         '
         'AbrirEnUnaNuevaVentanaToolStripMenuItem
         '
+        Me.AbrirEnUnaNuevaVentanaToolStripMenuItem.Font = New System.Drawing.Font("Open Sans", 9.75!, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, CType(0, Byte))
         Me.AbrirEnUnaNuevaVentanaToolStripMenuItem.ForeColor = System.Drawing.Color.FromArgb(CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer), CType(CType(64, Byte), Integer))
         Me.AbrirEnUnaNuevaVentanaToolStripMenuItem.Margin = New System.Windows.Forms.Padding(5, 0, 0, 0)
         Me.AbrirEnUnaNuevaVentanaToolStripMenuItem.Name = "AbrirEnUnaNuevaVentanaToolStripMenuItem"
         Me.AbrirEnUnaNuevaVentanaToolStripMenuItem.Padding = New System.Windows.Forms.Padding(3)
         Me.AbrirEnUnaNuevaVentanaToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Q), System.Windows.Forms.Keys)
-        Me.AbrirEnUnaNuevaVentanaToolStripMenuItem.Size = New System.Drawing.Size(417, 28)
+        Me.AbrirEnUnaNuevaVentanaToolStripMenuItem.Size = New System.Drawing.Size(384, 26)
         Me.AbrirEnUnaNuevaVentanaToolStripMenuItem.Text = "Abrir pestaña actual en una nueva ventana"
         '
         'Timer1
@@ -242,7 +246,7 @@ Partial Class windowbroser
         Me.Controls.Add(Me.PictureBox2)
         Me.Controls.Add(Me.TabControl1)
         Me.Icon = CType(resources.GetObject("$this.Icon"), System.Drawing.Icon)
-        Me.MinimumSize = New System.Drawing.Size(400, 400)
+        Me.MinimumSize = New System.Drawing.Size(480, 400)
         Me.Name = "windowbroser"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen
         Me.Text = "Clover"

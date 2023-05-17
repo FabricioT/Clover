@@ -135,6 +135,26 @@ Namespace My.Resources
         End Property
         
         '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property classic_theme() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("classic_theme", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property clover_altern_theme() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("clover_altern_theme", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
         '''  Busca un recurso adaptado de tipo System.Drawing.Icon similar a (Icono).
         '''</summary>
         Friend ReadOnly Property clover_logo() As System.Drawing.Icon
@@ -150,6 +170,36 @@ Namespace My.Resources
         Friend ReadOnly Property clover_logo1() As System.Drawing.Bitmap
             Get
                 Dim obj As Object = ResourceManager.GetObject("clover_logo1", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property custom_theme() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("custom_theme", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property custom_theme2() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("custom_theme2", resourceCulture)
+                Return CType(obj,System.Drawing.Bitmap)
+            End Get
+        End Property
+        
+        '''<summary>
+        '''  Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        '''</summary>
+        Friend ReadOnly Property dark_theme() As System.Drawing.Bitmap
+            Get
+                Dim obj As Object = ResourceManager.GetObject("dark_theme", resourceCulture)
                 Return CType(obj,System.Drawing.Bitmap)
             End Get
         End Property
