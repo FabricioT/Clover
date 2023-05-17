@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="es" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="Grenglish Academy">
+    <meta name="generator" content="Hugo 0.104.2">
+    <title>Clover | The Clover Project</title>
+    <link rel="canonical" href="http://miperfilecuador.com/">
+    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css">
+    <link rel="stylesheet" type="text/css" href="css/grid-gallery.css"/>
+    <link href="css/offcanvas-navbar.css" rel="stylesheet">
+    <meta name="theme-color" content="#712cf9">
+    <style>
+      a {
+        color:rgba(24, 21, 61, 1);
+      }
+      .nav-link {
+        color:rgba(24, 21, 61, 1)!important;
+      }
+        .bd-placeholder-img {
+          font-size: 1.125rem;
+          text-anchor: middle;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          user-select: none;
+        }
+
+        @media (min-width: 768px) {
+          .bd-placeholder-img-lg {
+            font-size: 3.5rem;
+          }
+        }
+
+        .b-example-divider {
+          height: 3rem;
+          background-color: rgba(0, 0, 0, .1);
+          border: solid rgba(0, 0, 0, .15);
+          border-width: 1px 0;
+          box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+        }
+
+        .b-example-vr {
+          flex-shrink: 0;
+          width: 1.5rem;
+          height: 100vh;
+        }
+
+        .bi {
+          vertical-align: -.125em;
+          fill: currentColor;
+        }
+
+        .nav-scroller {
+          position: relative;
+          z-index: 2;
+          height: 2.75rem;
+          overflow-y: hidden;
+        }
+
+        .nav-scroller .nav {
+          display: flex;
+          flex-wrap: nowrap;
+          padding-bottom: 1rem;
+          margin-top: -1px;
+          overflow-x: auto;
+          text-align: center;
+          white-space: nowrap;
+          -webkit-overflow-scrolling: touch;
+        }
+    </style>
+  </head>
+  <body class="bg-animated" style="
+  background:linear-gradient(220deg, rgba(255,255,255, 0.01), rgba(255,255,255, 1) 85%),
+  radial-gradient(ellipse at top left, rgba(3, 95, 210, 0.3), transparent 50%),
+  radial-gradient(ellipse at top right, rgba(0, 234, 0, 0.2), transparent 50%),
+  radial-gradient(ellipse at center right, rgba(112.520718,44.062154,249.437846, 0.2), transparent 40%),
+  radial-gradient(ellipse at center left, rgba(214,51,132, 0.2), transparent 90%);">
+
+
+<svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+  <symbol id="house-door-fill" viewBox="0 0 16 16">
+    <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"></path>
+  </symbol>
+  <symbol id="check2" viewBox="0 0 16 16">
+    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+  </symbol>
+</svg>
+
+
+<div class="modal fade" id="aboutus" aria-labelledby="aboutusLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content shadow-lg rounded-4 border-0 bg-blur-white">
+      <div class="modal-header border-0 pb-0 pt-3 pe-3 ps-2">
+        <!--<h1 class="modal-title fs-5 fw-bold" id="exampleModalLabel">Compartir este perfil</h1>-->
+        <button type="button p-3" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <h1 class="fs-3 fw-bold text-center">Un proyecto de</h1>
+        <div class="pb-2 pe-5 ps-5">
+          <img src="img/logo-project.svg" class="w-100">
+        </div>
+        <article class="pb-5 pe-5 ps-5 pt-2 text-center">
+          <p class="text-center text-body-tertiary">Somos una comunidad que busca realizar aplicaciones interesantes ccon lenguajes de programación sencillos como Visual Basic .NET.</p>
+          <p class="text-center text-body-tertiary">Tenemos la firme convicción de que el conocimiento debe ser libre y accesible a todos y por ello nuestros proyectos son de código abierto. Puedes encontrarlos en internet y descargarlos fácilmente.</p>
+          <p class="text-center text-body-tertiary">Clover nació en el año 2013 con la idea de convertirse en el mejor navegador web desarollado jamás en Visual Basic. Luego de muchas versiones y mejoras, llega la v13 (aún en desarrollo).</p>
+          <p class="text-center text-body-tertiary">Esta versión (13.0.0.0) incluye:</p>
+          <p class="text-center text-body-tertiary">Nuevo motor de renderizado (Chromium, antes era IE), barra de favoritos, descargas, rediseño en los TopSites de la 'Nueva Pestaña' bajo el protocolo 'clover://', mayor personalización en las opciones visuales y características del navegador y correcciones de errores.</p>
+          <p class="text-center text-body-tertiary"><a href="https://www.duographics.com.ec/hilsoft/developers/clover.html">Revisa características de las versiones pasadas aquí</a></p>
+          <a aria-label="Chat on WhatsApp" href="https://wa.me/593981109363"> <img alt="Chat on WhatsApp" src="img/WhatsAppButtonWhiteLarge.svg" /> </a>
+        </article>
+      </div>
+      <div class="modal-footere d-grid gap-2 d-md-flex justify-content-md-end" style="justify-content:inherit;" id="share-social">
+        <!--<button type="button" class="btn btn-light rounded-pill" data-bs-dismiss="modal"><i class="bi bi-person-vcard"></i> Compartir vCard</button>
+        <a href="https://wa.me/?text=" class="btn btn-success rounded-pill" data-bs-dismiss="modal"><i class="bi bi-whatsapp"></i> Compartir</a>
+        <button type="button" class="btn btn-primary rounded-pill"><i class="bi bi-linkedin"></i> Compartir</button>-->
+      </div>
+    </div>
+  </div>
+</div>
+
+  <div class="container py-3">
+    <header>
+      <nav class="navbar navbar-expand-lg d-flex flex-md-row align-items-center pb-3 mb-4">
+        <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none">
+          <img src="img/logo-full.svg" style="height:60px">
+        </a>
+
+        <div class="d-inline-flex mt-2 mt-md-0 ms-md-auto">
+          <button class="navbar-toggler p-2 border-0 fs-2" style="z-index:1500;" type="button" id="navbarSideCollapse" aria-label="Toggle navigation">
+            <span class="bi bi-list"></span>
+          </button>
+          <div class="navbar-collapse offcanvas offcanvas-collapse offcanvas-lg z-3 bg-blur rounded" style="top:0;" id="navbarsExampleDefault" data-bs-backdrop="static" >
+            <div class="offcanvas-header">
+              <h5 class="offcanvas-title" id="offcanvasResponsiveLabel">Menú</h5>
+            </div>
+            <div class="navbar-nav ps-3 pe-1 rounded border-white shadow-lg">
+              <a class="nav-item rounded me-3 py-2 link-body-emphasis text-decoration-none opacity-75" type="button" data-bs-toggle="modal" data-bs-target="#aboutus" href="#aboutus"><i class="bi bi-chat-square-quote"></i> Acerca del proyecto</a>
+              <a class="nav-item rounded me-3 py-2 link-body-emphasis text-decoration-none opacity-75" type="button" data-bs-toggle="modal" data-bs-target="#aboutus" href="#aboutus"><i class="bi bi-rocket-takeoff"></i> Lo nuevo</a>
+              <a class="nav-item rounded me-3 py-2 link-body-emphasis text-decoration-none opacity-75" href="https://www.duographics.com.ec/hilsoft/developers/clover.html"><i class="bi bi-menu-down"></i> Versiones anteriores</a>
+              <a class="nav-item rounded me-3 py-2 link-body-emphasis text-decoration-none opacity-75" href="https://github.com/FabricioT/Clover/tree/master"><i class="bi bi-github"></i> Github</a>
+            </div>
+          </div>
+
+
+        </div>
+      </nav>
+
+      <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+        <h1 class="display-5 fw-semibold position-relative">Clover, el navegador web desarrollado en Visual Basic</h1>
+        <p class="lead mb-4 fs-5">Presentamos la versión 13.0.0.0 de Clover (aún en desarrollo). Un navegador web desarrollado con pasión, con todas las ventajas que el potente motor basado en Chromium puede ofrecer.</p>
+      </div>
+    </header>
+  </div>
+    <main>
+      <div class="w-100 position-relative pb-3 pb-md-3 pb-lg-5">
+      <div class="container pt-3 pb-2 pb-md-3 pb-lg-5 mb-5">
+      <div class="row pb-2 pb-sm-5 row-cols-1 mb-3 mb-sm-5 text-center px-4 px-sm-5 px-md-2 px-lg-5 mx-lg-5 justify-content-md-center">
+        <div class="col px-3 pb-3 justify-content-md-center m-auto">
+          <img src="img/window.png" style="width:100%; max-width:700px;" class="position-absolute bottom-0 m-auto start-50 translate-middle-x" loading="lazy">
+          <div style="height:40vh; width:50px; padding-bottom:25vh;">
+          </div>
+        </div>
+      </div>
+    </div>
+      <svg class="w-100 position-absolute bottom-0 translate-y-middle z-n1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320"><path fill="#ffffff" fill-opacity="1" d="M0,128L120,149.3C240,171,480,213,720,202.7C960,192,1200,128,1320,96L1440,64L1440,320L1320,320C1200,320,960,320,720,320C480,320,240,320,120,320L0,320Z"></path></svg>
+    </div>
+    <div class="w-100 bg-body">
+      <div class="container px-4 px-sm-1 px-md-1 px-lg-4 pb-5 mb-5 pt-5" id="features">
+        <div class="container col-xxl-8 py-5">
+          <div class="pricing-header p-3 pb-md-4 mx-auto text-center">
+            <p class="lead mb-4 fs-5">Sí, leíste bien. Este navegador está desarrollado en Visual Basic. Y al contrario de lo que se pueda pensar, se pueden conseguir grandiosos resultados con dicho lenguaje. Para muestra, Clover.</p>
+          </div>
+          <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+              <img src="img/themes.jpg" class="d-block mx-lg-auto img-fluid rounded-4 shadow-lg" alt="Themes" style="border:solid 1px rgba(0,0,0,0.2); width:100%; max-width:600px" loading="lazy">
+            </div>
+            <div class="col-lg-6">
+              <h1 class="display-5 fw-bold text-body-emphasis lh-3 mb-3">Altamente personalizable</h1>
+              <p class="lead">Pensamos en todas las funciones de personalización que debe tener un navegador web hecho y derecho. Podrás elegir tu tema preferido, guardar favoritos y modificar los elementos de la ventana.</p>
+            </div>
+          </div>
+          <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-lg-6">
+              <h1 class="display-5 fw-bold text-body-emphasis lh-3 mb-3">Con la potencia de un titán</h1>
+              <p class="lead">Es increíble cómo exprime las capacidades del lenguaje vb.net y hace uso del poder de Chromium para llegar a ser un navegador web completo. Notarás que es capaz de realizar las tareas tradicionales que requieres (y un poquito más).</p>
+            </div>
+            <div class="col-10 col-sm-8 col-lg-6">
+              <img src="img/features.png" class="d-block mx-lg-auto img-fluid" alt="Features" style="width:100%; max-width:600px" loading="lazy">
+            </div>
+          </div>
+          <div class="row flex-lg-row-reverse align-items-center g-5 py-5">
+            <div class="col-10 col-sm-8 col-lg-6">
+              <img src="img/cef-cl.png" class="d-block mx-lg-auto img-fluid" alt="Themes" loading="lazy">
+            </div>
+            <div class="col-lg-6">
+              <h1 class="display-5 fw-bold text-body-emphasis lh-3 mb-3">Posible gracias al trabajo de muchos <i class="bi bi-heart-fill text-danger"></i></h1>
+              <p class="lead">De no ser por el descomunal trabajo realizado en el proyecto de CefSharp, Clover no sería posible. CefSharp está basado en <a href="https://bitbucket.org/chromiumembedded/cef/src/master/">Chromium Embedded Framework (Cef)</a> que permite tener el motor de renderización de Chromium para aplicaciones C# y VB.Net.</p>
+              <a href="https://cefsharp.github.io/" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Conoce más</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container px-4 pb-5">
+        <div class="mb-5 rounded-4 position-relative prsn-container border shadow-lg bg-card-home-prsn4" style="
+        ">
+          <div class="container-fluid px-5 pt-5 pb-0 pb-md-5">
+            <h1 class="display-5 fw-bold px-2"><i class="bi bi-qr-code-scan align-top"></i> Del pasado al futuro</h1>
+            <p class="col-md-8 fs-4 px-2 lead">No lo compares con otros navegadores, compáralo con él mismo.</p>
+            <p class="col-md-8 fs-4 px-2 lead">Clover no es un navegador nuevo. A lo largo de los años se ha ido puliendo y volviéndose más y más completo. Aquí puedes probar las versiones anteriores si deseas, y notarás cuánto ha progresado.</p>
+            <a href="https://www.duographics.com.ec/hilsoft/developers/clover.html" class="link-primary link-offset-2 link-underline-opacity-25 link-underline-opacity-100-hover">Descarga las versiones anteriores</a>
+          </div>
+          <div class="bottom-0 end-0 translate-x-middle prsn"
+          style="background-image:url(img/versions.png);"></div>
+        </div>
+      </div>
+      <div class="container pb-5">
+        <div clas="row m-auto flex-lg-row-reverse align-items-center">
+          <div class="col-10 m-auto">
+            <h1 class="display-5 fw-bold text-center text-body-emphasis lh-3 mb-3">Mira un adelanto:</h1>
+            <div class="h-auto" style="max-height:380px!important; margin:auto; width:100%; max-width:560px;">
+              <iframe style="margin:auto; width:100%; max-width:560px;" height="315" src="https://www.youtube.com/embed/OkausWSakWM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container col-xl-10 col-xxl-8 px-4 pb-2">
+        <div class="row align-items-center g-lg-5 py-5">
+          <div class="col-lg-7 text-center text-lg-start">
+            <h1 class="display-4 fw-bold lh-1 text-body-emphasis mb-3">¿Deseas colaborar?</h1>
+            <p class="col-lg-10 fs-4 lead">Puedes enviarnos un e-mail a la dirección <a href="mailto:fisaatrusua@hotmail.com">fisaatrusua@hotmail.com</a>. Acompáñanos a seguir desarrollando Clover y forma parte de nuestra comunidad.</p>
+            <p class="col-lg-10 fs-4 lead">Necesitamos: programadores C# y VB.Net, diseñadores gráficos y artistas visuales.</p>
+          </div>
+          <div class="col-md-10 mx-auto col-lg-5">
+            <div class="w-100 position-relative bottom-0 m-auto start-50 translate-middle-x" style="height: 350px; min-width: 350px;
+            background-image:url(img/logo-project.svg);
+            background-repeat:no-repeat;
+            background-position:center;
+            background-size:contain;"></div>
+          </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+
+  <div class="container">
+    <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4">
+      <div class="col-md-6 mb-0 d-flex align-items-center">
+        <a href="#" class="mb-3 mb-md-0 me-2 link-body-emphasis text-decoration-none">
+          <img src="img/logo-min.svg" style="width:40px;">
+        </a>
+        <span class="text-body-secondary mb-3 mb-md-0 lh-1">
+          &copy; 2023 Creado con <i class="bi bi-heart-fill text-danger"></i> por The Clover Project
+        </span>
+      </div>
+
+
+      <ul class="nav col-md-4 justify-content-end">
+        <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Inicio</a></li>
+        <li class="nav-item"><a type="button" data-bs-toggle="modal" data-bs-target="#aboutus" href="#aboutus" class="nav-link px-2 text-body-secondary">Conócenos</a></li>
+        <li class="nav-item"><a type="button" data-bs-toggle="modal" data-bs-target="#aboutus" href="#aboutus" class="nav-link px-2 text-body-secondary">Novedades</a></li>
+        <li class="nav-item"><a href="https://www.duographics.com.ec/hilsoft/developers/clover.html" class="nav-link px-2 text-body-secondary">versiones anteriores</a></li>
+        <li class="nav-item"><a href="https://github.com/FabricioT/Clover/tree/master" class="nav-link px-2 text-body-secondary">GitHub</a></li>
+      </ul>
+    </footer>
+  </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+    <script src="js/offcanvas-navbar.js"></script>
+  </body>
+</html>

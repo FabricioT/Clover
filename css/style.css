@@ -1,0 +1,271 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.4/font/bootstrap-icons.css");
+.btn {
+  transition: 0.6s ease all !important;
+  transform:
+    scale(1);
+}
+.btn:hover {
+  transform:
+    scale(1.02)
+    translate3d(0px, 0px, 30px);
+    box-shadow:rgba(0, 0, 0, .2) 15px 28px 25px -18px!important;
+    border-color:
+    rgb(213, 220, 226)
+    rgb(213, 220, 226)
+    rgb(184, 194, 204);
+}
+.bg-blur-white {
+    background-color: rgba(255,255,255,0.65)!important;
+    background: hsla(0,0%,100%,0) linear-gradient(180deg, rgba(247,250,255,0.5),rgba(247,250,255,0));
+    -webkit-backdrop-filter: blur(1rem);
+    backdrop-filter: blur(1rem) saturate(200%);
+}
+.bg-blur {
+    -webkit-backdrop-filter: blur(1rem);
+    backdrop-filter: blur(1rem) saturate(200%);
+}
+.transition-3 {
+  transition: 0.6s ease all !important;
+}
+.my-shadow {
+  box-shadow:
+      1px 1px 0 1px rgba(34, 33, 81, 0.06),
+      -1px 0 28px 0 rgba(34, 33, 81, 0.005),
+      4px 24px 28px -10px rgba(34, 33, 81, 0.05);
+}
+.card-cover {
+  background: rgba(0,0,0,.2);
+}
+.gris-claro {
+  background: #f7f7f9;
+}
+#bg-profile {
+  background-size: 150% 200% !important;
+  background-position: 0 50%;
+  animation: moveGradient 10s alternate ease infinite;
+}
+.bg-animated {
+  background-size: 150% 200% !important;
+  background-position: 0 50%;
+  animation: moveGradient 10s alternate ease infinite;
+}
+.card-profile {
+  transition: 0.6s ease all !important;
+  height:300px;
+  min-width:200px;
+  max-width:300px;
+}
+.card-profile:hover {
+  transform:
+  perspective(100px)
+  rotateX(0deg)
+  rotateY(0deg)
+  rotateZ(0deg)
+  scale(1.05);
+}
+.trans-left {
+  transform:
+    perspective(500px)
+    rotateX(4deg)
+    rotateY(-18deg)
+    rotateZ(2deg)
+    scale(0.9);
+}
+.trans-right {
+  transform:
+    perspective(500px)
+    rotateX(-2deg)
+    rotateY(18deg)
+    rotateZ(-2deg)
+    scale(0.9);
+}
+.gradient-miperfil {
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+}
+.btn-miperfil {
+  background-image: radial-gradient(100% 100% at 100% 0, #5adaff 0, #5468ff 100%);
+  box-shadow: rgba(94, 93, 240,0.8) 0 10px 40px -10px;
+  color: rgba(255,255,255,1)!important;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  border:0px!important;
+}
+.feature-icon {
+  padding: 2.3rem;
+  text-shadow: 1px 1px 2px rgba(0,0,0,.2);
+  font-size: 2.3rem!important;
+  box-shadow: rgba(94, 93, 240,0.8) 0 10px 40px -10px;
+}
+.prsn-container {
+  overflow:inherit;
+}
+.prsn {
+  position:absolute;
+  height: 450px;
+  min-width: 300px;
+  background-repeat:no-repeat;
+  background-position:center;
+  background-size:contain;
+}
+.bg-card-home-prsn4 {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f8f9fa+38,f2c1f4+78,ed6dde+100 */
+background: rgb(255,255,255); /* Old browsers */
+}
+.breadcrumb-chevron {
+  --bs-breadcrumb-divider: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%236c757d'%3E%3Cpath fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  gap: .5rem;
+}
+.breadcrumb-chevron .breadcrumb-item {
+  display: flex;
+  gap: inherit;
+  align-items: center;
+  padding-left: 0;
+  line-height: 1;
+}
+.breadcrumb-chevron .breadcrumb-item::before {
+  gap: inherit;
+  float: none;
+  width: 1rem;
+  height: 1rem;
+}
+
+.breadcrumb-custom .breadcrumb-item {
+  position: relative;
+  flex-grow: 1;
+  padding: .75rem 3rem;
+}
+.breadcrumb-custom .breadcrumb-item::before {
+  display: none;
+}
+.breadcrumb-custom .breadcrumb-item::after {
+  position: absolute;
+  top: 50%;
+  right: -25px;
+  z-index: 1;
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  margin-top: -25px;
+  content: "";
+  background-color: var(--bs-tertiary-bg);
+  border-top-right-radius: .5rem;
+  box-shadow: 1px -1px var(--bs-border-color);
+  transform: scale(.707) rotate(45deg);
+}
+.breadcrumb-custom .breadcrumb-item:first-child {
+  padding-left: 1.5rem;
+}
+.breadcrumb-custom .breadcrumb-item:last-child {
+  padding-right: 1.5rem;
+}
+.breadcrumb-custom .breadcrumb-item:last-child::after {
+  display: none;
+}
+
+.container-x {
+  max-width: 960px;
+}
+
+.pricing-header {
+  max-width: 700px;
+}
+
+.feature-icon {
+  width: 4rem;
+  height: 4rem;
+  border-radius: .75rem;
+}
+
+.icon-link > .bi {
+  margin-top: .125rem;
+  margin-left: .125rem;
+  fill: currentcolor;
+  transition: transform .25s ease-in-out;
+}
+.icon-link:hover > .bi {
+  transform: translate(.25rem);
+}
+
+.icon-square {
+  width: 3rem;
+  height: 3rem;
+  border-radius: .75rem;
+}
+
+.text-shadow-1 { text-shadow: 0 .125rem .25rem rgba(0, 0, 0, .25); }
+.text-shadow-2 { text-shadow: 0 .25rem .5rem rgba(0, 0, 0, .25); }
+.text-shadow-3 { text-shadow: 0 .5rem 1.5rem rgba(0, 0, 0, .25); }
+
+.card-cover {
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.feature-icon-small {
+  width: 3rem;
+  height: 3rem;
+}
+
+#qrcode {
+  width: auto;
+  max-width: 256px !important;
+  padding: 20px;
+  margin: auto;
+}
+
+@keyframes moveGradient {
+  50% {
+    background-position: 100% 50%;
+  }
+}
+/*
+@keyframes moveGradient {
+  0%{background-position:10% 0%}
+    50%{background-position:91% 100%}
+    100%{background-position:10% 0%}
+}
+*/
+@keyframes OpacityAnim {
+    0%{opacity: 1.0}
+    100%{opacity: 0.0}
+}
+
+@media (max-width: 991.98px) {
+  .prsn {
+    height: 400px;
+    min-width: 260px;
+  }
+}
+@media (max-width: 767.98px) {
+  .bg-card-home-prsn4 {
+    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#f8f9fa+38,f2c1f4+78,ed6dde+100 */
+  background: rgb(255,255,255); /* Old browsers */
+
+  }
+  .prsn-container {
+    overflow: hidden;
+  }
+  .prsn {
+    height: 300px;
+    min-width: 260px;
+    max-width: 260px;
+    float: right;
+    position:relative;
+  }
+  .trans-left {
+    transform:
+    perspective(100px)
+    rotateX(0deg)
+    rotateY(0deg)
+    rotateZ(0deg)
+    scale(0.85);
+  }
+  .trans-right {
+    transform:
+    perspective(100px)
+    rotateX(0deg)
+    rotateY(0deg)
+    rotateZ(0deg)
+    scale(0.85);
+  }
+}
